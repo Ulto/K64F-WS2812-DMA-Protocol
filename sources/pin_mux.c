@@ -81,31 +81,16 @@ void BOARD_InitPins(void) {
 
 	CLOCK_EnableClock(kCLOCK_PortB);                           	/* Port B Clock Gate Control: Clock enabled */
 	CLOCK_EnableClock(kCLOCK_PortC);                          	/* Port C Clock Gate Control: Clock enabled */
-	CLOCK_EnableClock(kCLOCK_PortD);                         	/* Port D Clock Gate Control: Clock enabled */
 
 
 	PORT_SetPinMux(PORTB, PIN16_IDX, kPORT_MuxAlt3);           	/* PORTB16 (pin E10) is configured as UART0_RX */
 	PORT_SetPinMux(PORTB, PIN17_IDX, kPORT_MuxAlt3);           	/* PORTB17 (pin E9) is configured as UART0_TX */
 
-	PORT_SetPinMux(PORTC, PIN1_IDX, kPORT_MuxAlt4);            	/* PORTC1 (pin B11) is configured as FTM0_CH0 */
-	PORT_SetPinMux(PORTC, PIN2_IDX, kPORT_MuxAlt4);            	/* PORTC2 (pin A12) is configured as FTM0_CH1 */
-	PORT_SetPinMux(PORTC, PIN3_IDX, kPORT_MuxAlt4);            	/* PORTC2 (pin A12) is configured as FTM0_CH2 */
 
 	PORT_SetPinMux(PORTB, 22u, kPORT_MuxAsGpio);         		/* PORTB22 (pin C12) is configured as PTB22 */
 
 
-	// Setup first 8 bits of PORTD for output
-	// 8 bits is the limit here as the transmit buffer is uint8_t
-	PORT_SetPinMux(PORTD, PIN0_IDX, kPORT_MuxAsGpio);
-	PORT_SetPinMux(PORTD, PIN1_IDX, kPORT_MuxAsGpio);
-	PORT_SetPinMux(PORTD, PIN2_IDX, kPORT_MuxAsGpio);
-	PORT_SetPinMux(PORTD, PIN3_IDX, kPORT_MuxAsGpio);
-	PORT_SetPinMux(PORTD, PIN4_IDX, kPORT_MuxAsGpio);
-	PORT_SetPinMux(PORTD, PIN5_IDX, kPORT_MuxAsGpio);
-	PORT_SetPinMux(PORTD, PIN6_IDX, kPORT_MuxAsGpio);
-	PORT_SetPinMux(PORTD, PIN7_IDX, kPORT_MuxAsGpio);
-	GPIOD->PSOR |= 0xFF;
-	GPIOD->PDDR |= 0xFF;
+
 
 	SIM->SOPT5 = ((SIM->SOPT5 &
 			(~(SIM_SOPT5_UART0TXSRC_MASK)))                          /* Mask bits to zero which are setting */

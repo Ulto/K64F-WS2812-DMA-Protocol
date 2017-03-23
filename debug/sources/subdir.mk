@@ -4,18 +4,21 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../sources/NEO.c \
 ../sources/board.c \
 ../sources/clock_config.c \
 ../sources/ftm_simple_pwm.c \
 ../sources/pin_mux.c 
 
 OBJS += \
+./sources/NEO.o \
 ./sources/board.o \
 ./sources/clock_config.o \
 ./sources/ftm_simple_pwm.o \
 ./sources/pin_mux.o 
 
 C_DEPS += \
+./sources/NEO.d \
 ./sources/board.d \
 ./sources/clock_config.d \
 ./sources/ftm_simple_pwm.d \

@@ -307,10 +307,12 @@ void delay(uint32_t ms)
 void setPixel(uint8_t strip_N, uint8_t Pixel, Color c) {
 	RGB cc = packColor(c);
 	for(uint32_t j=(Pixel*NEO_NOF_BITS_PIXEL);j<(Pixel*NEO_NOF_BITS_PIXEL)+NEO_NOF_BITS_PIXEL;j++){
-		if((cc & 0x01) == 1)
+
+		if((cc & 0x01) == 1)	// Need to know if were adding the bit, or turning it off
 			transmitBuf[j] |= ((cc & 0x1) << strip_N);
 		else
 			transmitBuf[j] &= ~((0x1) << strip_N);
+
 		cc=cc>>1;
 	}
 }

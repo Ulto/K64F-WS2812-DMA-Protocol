@@ -54,6 +54,7 @@ void initBuffer(void);
 
 void delay(uint32_t ms);
 
+void NEO_initialize(void);
 
 void colorWipe(uint8_t strip_N, Color c, uint32_t SpeedDelay);
 
